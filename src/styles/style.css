@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+.paytone-one, h1, h2, h3 {
+    font-family: "Paytone One", serif;
+    font-style: normal;
+}
+  
+.poppins, * {
+    font-family: "Poppins", serif;
+    font-style: normal;
+    color: #fff;
+}
+
+.inter, * {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body, html {
+    background-color: #fff;
+}
+
+.ju367v9i {
+    background-color: #05F292 !important;
+}
+
+.ju367vf3 {
+    color: #000 !important;
+}
+
+
+#hero {
+    background-image: url("/images/glow.svg");
+}
+
+.about-block-container {
+    background-image: url('/images/Vector 113.svg');
+}
+
+.about-container {
+    background-image: url('/images/Group 1171276912.png');
+}
+
+.contact-us {
+    background-image: url('/images/Frame 1707485446.png');
+}
+
+.faq {
+    background-image: url('/images/Vector 118.svg');
+}
+
+#dedin_0 {
+    color: #05F292;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Remove default styling */
+  width: 100%; /* Adjust slider width */
+  height: 1rem; /* Adjust slider height */
+  background: #050E1A; /* Base track color */
+  border-radius: 1rem; /* Rounded edges */
+  outline: none; /* Remove focus outline */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default thumb styling */
+  width: 1.5rem; /* Thumb width */
+  height: 1.5rem; /* Thumb height */
+  background-image: url('/images/check.svg'), linear-gradient(to right, #4F3C8E, #7248FD);
+  background-size: 50%, 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #fff;
+  border-radius: 50%; /* Rounded thumb */
+  cursor: pointer; /* Change cursor on hover */
+  position: relative;
+  top: -7px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none; /* Remove default track styling */
+  border-radius: 5px; /* Rounded track */
+  height: 10px;
+}
+
+input[type="range"]::-moz-range-track {
+  background-color: red;
+  border-radius: 5px;
+  height: 10px;
+}
+
+input[type="range"]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 6px 0;
+  color: transparent;
+  width: 100%;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background: #0078d7;
+  border-radius: 5px;
+}
+
+input[type="range"]::-ms-fill-upper {
+  background: red;
+  border-radius: 5px;
+}
+
+
+
+.checkbox-container {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+  /* When the radio button is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark * {
+     opacity: 1;
+ }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+  /* Show the indicator (dot/circle) when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+    background-image: li;
+}
+
+.active-verifier p:nth-of-type(1) {
+    background-color: #7248FD;
+    color: #fff;
+}
+
+.active-verifier p:nth-of-type(2) {
+    color: #fff;
+    display: inline-block;
+}
+
+.active-current p:nth-of-type(1) {
+    display: inline;
+}
+
+.active-not-current p:nth-of-type(2)  {
+    display: none;
+}
+
+.ju367v9i {
+    background-image: linear-gradient(to right, red, white);
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
