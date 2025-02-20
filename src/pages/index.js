@@ -1,8 +1,21 @@
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import Image from "next/image"
+import { useConnectModal } from '@rainbow-me/rainbowkit'
+import { useAccount } from "wagmi";
+import { useRouter } from 'next/router';
+import { useEffect } from "react";
 
 export default function Home() {
+    const router = useRouter();
+    const { openConnectModal } = useConnectModal();
+    const { isConnected } = useAccount();
+    useEffect(() => {
+        if (isConnected) {
+            
+        }
+    }, [isConnected])
+
     return (
         <>
             <header className="min-h-screen px-6 md:px-12 lg:px-20 relative">
@@ -14,11 +27,11 @@ export default function Home() {
                 <div className="text-center grid gap-12 md:grid-cols-2 h-full translate-y-1/4">
                     <div className="flex flex-col gap-6 md:pt-12">
                         <h1 className="text-5xl md:text-left md:text-7xl">AI Data <span className="text-[#05F292] paytone-one">Node</span> Infrastructure</h1>
-                        <button className="bg-gradient-to-b from-[#074D35] to-[#05F292] px-6 py-3 w-fit rounded-full mx-auto md:mx-0">Start XSpace</button>
+                        <button onClick={() => { isConnected ? router.push('/space') : openConnectModal() }} className="bg-gradient-to-b from-[#074D35] to-[#05F292] px-6 py-3 w-fit rounded-full mx-auto md:mx-0">Start XSpace</button>
                     </div>
                     <Image src={"/images/Frame 172.png"} className="w-4/5 mx-auto relative" width={463} height={432} alt="" />
                 </div>
-            </header>
+            </header >
 
             <div className="px-6 md:px-12 lg:px-20">
                 <section className="bg-[#05F29205] border-x-2 border-solid border-[#05F292] rounded-md p-4 grid grid-cols-2 md:grid-cols-4 gap-y-8 md:p-8">

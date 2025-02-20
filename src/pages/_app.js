@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <SessionProvider session={pageProps.session} refetchInterval={0}>
-                    <RainbowKitProvider modalSize="compact" theme={ darkTheme() }>
+                    <RainbowKitProvider locale="en-US " modalSize="compact" theme={darkTheme()}>
                         <Component {...pageProps} />
                     </RainbowKitProvider>
                 </SessionProvider>
