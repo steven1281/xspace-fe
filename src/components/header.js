@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 
 export default function Header() {
     const { isConnected, address } = useAccount();
-    const { data: session, status } = useSession()
+    // const { data: session, status } = useSession()
 
     const menu = useRef(null)
     const openMenuButton = useRef(null)
@@ -19,7 +19,7 @@ export default function Header() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({walletAddress:address})
+                body: JSON.stringify({ walletAddress: address })
             })
 
             const response = await request.json()
@@ -62,8 +62,8 @@ export default function Header() {
                 </div>
                 <div className='flex w-fit gap-4 items-center'>
                     <ConnectButton />
-                    <button ref={ openMenuButton} onClick={ openMenu } className='block lg:hidden'><svg xmlns="http://www.w3.org/2000/svg" className='size-8' height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></button>
-                    <button ref={ closeMenuButton} onClick={ openMenu } className='hidden'><svg xmlns="http://www.w3.org/2000/svg" className='size-8' height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></button>
+                    <button ref={openMenuButton} onClick={openMenu} className='block lg:hidden'><svg xmlns="http://www.w3.org/2000/svg" className='size-8' height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" /></svg></button>
+                    <button ref={closeMenuButton} onClick={openMenu} className='hidden'><svg xmlns="http://www.w3.org/2000/svg" className='size-8' height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" /></svg></button>
                 </div>
             </nav>
 
