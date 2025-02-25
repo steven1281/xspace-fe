@@ -1,8 +1,55 @@
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
-import { API_URL } from '../config/config';
+import { API_URL, TEST_ORIGIN } from '../config/config';
 
 const REFRESH_THRESHOLD = 0;
+
+export async function challenge(address: string): Promise<string> {
+    const response = await axios.get(
+        API_URL.Challenge,
+        {
+            params: {
+                address,
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Origin': TEST_ORIGIN
+            }
+        }
+    );
+
+    if (response.status !== 200) {
+        throw new Error(`API request failed with status ${response.status}: ${response.data}`);
+    }
+    console.log(response.data);
+
+    return response.data;
+}
+
+export async function login(message: string, signature: string): Promise<{ accessToken: string, refreshToken: string }> {
+    const response = await axios.post(
+        API_URL.Login,
+        {
+            "message": message,
+            "signature": signature
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+    );
+
+    if (response.status !== 200) {
+        throw new Error(`API request failed with status ${response.status}: ${response.data}`);
+    }
+    console.log(response.data);
+
+    return {
+        accessToken: response.data.accessToken,
+        refreshToken: response.data.refreshToken
+    };
+}
 
 export async function refresh(refreshToken: string): Promise<string> {
     const response = await axios.post(
@@ -20,6 +67,29 @@ export async function refresh(refreshToken: string): Promise<string> {
     }
 
     return response.data.accessToken;
+}
+
+export async function getUserInfo(accessToken: string): Promise<{ points: number, referrals: number, space: number, invitedCode: string }> {
+    const response = await axios.get(
+        API_URL.USER_INFO,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            }
+        }
+    );
+
+    if (response.status !== 200) {
+        throw new Error(`API request failed with status ${response.status}: ${response.data}`);
+    }
+
+    return {
+        points: response.data.Points,
+        referrals: response.data.Referrals,
+        space: response.data.Space,
+        invitedCode: response.data.InvitedCode,
+    };
 }
 
 export function setToken(accessToken: string, refreshToken: string) {

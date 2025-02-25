@@ -7,10 +7,10 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import { RainbowKitProvider, getDefaultConfig, darkTheme } from "@rainbow-me/rainbowkit";
 import { mainnet } from "wagmi/chains";
-import { SessionProvider } from "next-auth/react";
 import "@rainbow-me/rainbowkit/styles.css";
 import { ProjectProvider } from "@/lib/context/ProjectsContext";
 import { AuthProvider } from "@/lib/context/AuthContext";
+import { PointProvider } from "@/lib/context/PointContext";
 
 export default function App({ Component, pageProps }) {
     const config = getDefaultConfig({
@@ -27,13 +27,13 @@ export default function App({ Component, pageProps }) {
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider locale="en-US " modalSize="compact" theme={darkTheme()}>
-                    <SessionProvider session={pageProps.session} refetchInterval={0}>
-                        <ProjectProvider>
-                            <AuthProvider>
+                    <ProjectProvider>
+                        <AuthProvider>
+                            <PointProvider>
                                 <Component {...pageProps} />
-                            </AuthProvider>
-                        </ProjectProvider>
-                    </SessionProvider>
+                            </PointProvider>
+                        </AuthProvider>
+                    </ProjectProvider>
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>

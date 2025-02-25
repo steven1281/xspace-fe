@@ -1,7 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Link from 'next/link';
 import { useAccount } from 'wagmi';
-import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useRef } from 'react';
 
 export default function Header() {
@@ -12,31 +11,6 @@ export default function Header() {
     const openMenuButton = useRef(null)
     const closeMenuButton = useRef(null)
 
-    useEffect(() => {
-        const bindAddress = async () => {
-            const request = await fetch('https://apapi.memoscan.org/api/user/wallet/bind', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ walletAddress: address })
-            })
-
-            const response = await request.json()
-            console.log(response.data)
-            const uid = response.data.uid
-            const token = response.data.token
-            await signIn("credentials", {
-                redirect: false, // Set to true if you want to redirect after sign-in
-                uid, // Pass the identifier to your provider
-                token // Pass the identifier to your provider
-            });
-        }
-
-        if (address) {
-            bindAddress()
-        }
-    }, [address])
 
     const openMenu = () => {
         menu.current.classList.toggle("hidden")
