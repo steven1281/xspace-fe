@@ -1,14 +1,16 @@
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import XData from "@/components/xdata-component"
+import { useNFT } from "@/lib/context/NFTContext"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { useAccount } from "wagmi"
 
 export default function Space() {
+    const { NFTList } = useNFT();
     const dataSources = useRef(null)
     const { isConnected, address } = useAccount();
-
+    const { NFTInfos } = useNFT();
     const [isData, setIsData] = useState(true)
 
     const [dataSource, setDataSource] = useState(0)
@@ -26,18 +28,6 @@ export default function Space() {
         setDataSource(id)
         toggleDataSourcesElem()
     }
-
-    useEffect(() => {
-        const fetchSpaceData = async () => {
-            const request = await fetch('https://apapi.memoscan.org/api/space/list', {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                //body: JSON.stringify({walletAddress:address})
-            })
-        }
-    }, [])
 
 
     return (
@@ -71,8 +61,13 @@ export default function Space() {
 
                     {isData ?
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-4">
-                            <XData />
-                            <XData />
+                            {
+                                NFTInfos?.map((NFTInfo, i) => {
+                                    return (
+                                        <XData tokenID={NFTInfo.tokenID} key={i} />
+                                    )
+                                })
+                            }
                         </div> :
 
                         <div className="hidden flex-col gap-4 top-1/2 -translate-y-1/2 absolute md:w-1/2 lg:w-1/4 text-center mx-auto inset-x-0 p-4">

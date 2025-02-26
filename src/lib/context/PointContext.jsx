@@ -35,6 +35,12 @@ export const PointProvider = ({ children }) => {
                         size: 10,
                     },
                 })
+
+                if (response.status === 200) {
+                    console.log("history: ", response.data)
+                    setHistory(response.data.History);
+                    localStorage.setItem("history", JSON.stringify(response.data.History));
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -55,7 +61,7 @@ export const usePoint = () => {
     const context = useContext(PointContext);
 
     if (!context) {
-        throw new Error('useProjects must be used within a PointProvider');
+        throw new Error('usePoint must be used within a PointProvider');
     }
 
     return context;

@@ -11,6 +11,8 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { ProjectProvider } from "@/lib/context/ProjectsContext";
 import { AuthProvider } from "@/lib/context/AuthContext";
 import { PointProvider } from "@/lib/context/PointContext";
+import { NFTProvider } from "@/lib/context/NFTContext";
+import { UserProvider } from "@/lib/context/UserContext";
 
 export default function App({ Component, pageProps }) {
     const config = getDefaultConfig({
@@ -30,7 +32,11 @@ export default function App({ Component, pageProps }) {
                     <ProjectProvider>
                         <AuthProvider>
                             <PointProvider>
-                                <Component {...pageProps} />
+                                <NFTProvider>
+                                    <UserProvider>
+                                        <Component {...pageProps} />
+                                    </UserProvider>
+                                </NFTProvider>
                             </PointProvider>
                         </AuthProvider>
                     </ProjectProvider>

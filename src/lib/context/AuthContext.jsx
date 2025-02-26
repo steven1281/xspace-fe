@@ -11,45 +11,9 @@ export const AuthProvider = ({ children }) => {
     const { address, isConnected } = useAccount();
     const { signMessageAsync } = useSignMessage();
 
-
-    // useEffect()
-
-
-    // useEffect(() => {
-    //     if (address != null && accessToken == null && refreshToken == null) {
-    //         const Login = async () => {
-    //             const challengeResponse = await axios.get(`${API_URL.Challenge}?address=${address}&chainid=${chainId}`, {
-    //                 headers: {
-    //                     'Origin': TEST_ORIGIN
-    //                 }
-    //             });
-    //             if (challengeResponse.status === 200) {
-    //                 const message = challengeResponse.data
-    //                 const signature = await signMessageAsync({ message });
-    //                 const loginResponse = await axios.post(`${API_URL.Login}`, {
-    //                     message,
-    //                     signature
-    //                 });
-    //                 if (loginResponse.status === 200) {
-    //                     setAccessToken(loginResponse.data.accessToken);
-    //                     setRefreshToken(loginResponse.data.refreshToken);
-
-    //                     console.log("ac", accessToken)
-    //                     console.log("re", refreshToken)
-    //                 }
-
-    //             }
-
-    //         }
-
-    //         Login();
-    //     }
-    // }, [isConnected]);
-
     const Login = async () => {
         try {
             if (isConnected) {
-                console
                 const message = await challenge(address);
                 const signature = await signMessageAsync({ message });
                 const { accessToken, refreshToken } = await login(message, signature);
@@ -63,6 +27,13 @@ export const AuthProvider = ({ children }) => {
     const autoLogin = async () => {
         if (checkExpire()) {
             Login();
+            console.log("login")
+        } else {
+            const { newAccessToken, refreshToken } = await getToken();
+            if (newAccessToken && refreshToken) {
+                setToken(newAccessToken, refreshToken);
+            }
+            console.log("refresh token: ", newAccessToken)
         }
     }
     useEffect(() => {
