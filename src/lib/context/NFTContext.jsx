@@ -1,6 +1,6 @@
 import { API_URL } from "@/components/config/config";
 import axios from "axios";
-import { createContext, useEffect, useState, useContext } from "react";
+import { createContext, useEffect, useState, useContext, useCallback } from "react";
 import { useAccount } from "wagmi";
 
 
@@ -9,70 +9,81 @@ const NFTContext = createContext();
 export const NFTProvider = ({ children }) => {
     const { isConnected } = useAccount();
 
-    const [NFTInfos, setNFTInfos] = useState([
-        {
-
-        }
-    ]);
+    const [NFTInfos, setNFTInfos] = useState([]);
     const [NFTpage, setNFTpage] = useState(1);
+    const [abortController, setAbortController] = useState(new AbortController());
 
-    const getNFTList = async () => {
+    const clearNFTData = useCallback(() => {
+        setNFTInfos([]);
+        localStorage.removeItem("NFTInfos");
+    }, []);
+
+    const getNFTList = useCallback(async () => {
+        const newAbortController = new AbortController();
+        setAbortController(newAbortController);
+
         try {
-            // const storeNFTInfos = localStorage.getItem("NFTInfos");
-            // if (storeNFTInfos) {
-            //     setNFTInfos(JSON.parse(storeNFTInfos));
-            // }
             const accessToken = localStorage.getItem("accessToken");
-            console.log("accessToken", accessToken)
-            if (isConnected) {
+            if (isConnected && accessToken) {
                 const response = await axios.get(API_URL.NFT_LIST, {
-                    headers: {
-                        "Authorization": `Bearer ${accessToken}`
-                    },
-                    params: {
-                        page: NFTpage,
-                        size: 10
-                    }
+                    headers: { "Authorization": `Bearer ${accessToken}` },
+                    params: { page: NFTpage, size: 10 },
+                    signal: newAbortController.signal
                 })
                 if (response.status === 200) {
-                    console.log("NFT_LIST", response.data)
                     setNFTInfos(response.data.nftInfos)
-                    localStorage.setItem("NFT_LIST", JSON.stringify(response.data.nftInfos));
+                    localStorage.setItem("NFTInfos", JSON.stringify(response.data.nftInfos));
                 }
+            } else {
+                const stored = localStorage.getItem("NFTInfos");
+                if (stored) setNFTInfos(JSON.parse(stored));
             }
         } catch (error) {
-            console.error(error)
-        }
-    }
-
-
-    const getNFTInfo = async (tokenID) => {
-        if (tokenID !== undefined) {
-            try {
-                console.log("tokenID", tokenID)
-                const accessToken = localStorage.getItem("accessToken");
-
-                const response = await axios.get(API_URL.NFT_TWEET_INFO, {
-                    headers: {
-                        "Authorization": `Bearer ${accessToken}`
-                    },
-                    params: {
-                        tokenID: tokenID
-                    }
-                })
-                if (response.status === 200) {
-                    console.log("getNFTInfo: ", response.data)
-                    return response.data
+            if (axios.isCancel(error)) {
+                console.log('Request canceled:', error.message);
+                return;
+            }
+            if (error.response) {
+                console.error('Server responded with error status:', {
+                    status: error.response.status,
+                    data: error.response.data
+                });
+                if (error.response.status === 401) {
+                    // localStorage.removeItem("accessToken");
                 }
-            } catch (error) {
-                console.log(error)
+            } else if (error.request) {
+                console.error('No response received:', error.request);
             }
         }
-    }
+    }, [isConnected, NFTpage])
 
     useEffect(() => {
-        getNFTList()
-    }, [isConnected])
+        getNFTList();
+        return () => abortController.abort();
+    }, [getNFTList])
+
+    useEffect(() => {
+        if (!isConnected) clearNFTData();
+    }, [isConnected, clearNFTData]);
+
+
+    const getNFTInfo = useCallback(async (tokenID) => {
+        if (!tokenID) return null;
+
+        try {
+            const accessToken = localStorage.getItem("accessToken");
+            const response = await axios.get(API_URL.NFT_TWEET_INFO, {
+                headers: { "Authorization": `Bearer ${accessToken}` },
+                params: { tokenID: tokenID }
+            });
+
+            return response.status === 200 ? response.data : null;
+        } catch (error) {
+            console.error("NFT info error:", error);
+            return null;
+        }
+
+    }, [])
 
 
     return (

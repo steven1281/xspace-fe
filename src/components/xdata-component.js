@@ -13,7 +13,7 @@ export default function XData(tokenID) {
                 <svg className="size-6" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFF"><path d="m242-246-42-42 412-412H234v-60h480v480h-60v-378L242-246Z" /></svg>
             </button>
             <div className="w-2/3 lg:w-full">
-                <h2 className="text-2xl text-[#B7F272]">GODATA on</h2>
+                <h2 className="text-2xl text-[#B7F272]">{nftInfo.name}</h2>
                 <p className="text-xs">25 Dec 2024 17:17</p>
 
                 <p className="font-bold text-2xl mt-4">DINgers, are you ready?</p>

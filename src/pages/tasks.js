@@ -6,6 +6,9 @@ import { TasksPrice } from "@/components/tasks-price"
 import Image from "next/image"
 
 export default function Tasks() {
+    const twitterText = "";
+    const tgText = "";
+    const currentUrl = "";
     return (
         <>
             <div className="px-6 md:px-12 lg:px-20 relative">
@@ -20,13 +23,16 @@ export default function Tasks() {
                     <div className="flex flex-col gap-2 lg:w-2/3">
                         <section className="flex gap-4">
                             <h2 className="text-2xl">Newbie Task</h2>
-                            <TasksPrice amount={50} />
                         </section>
                         <p className="mb-4">Wrap up all these tasks, and you&apos;ll get 15 more Wafers!</p>
 
                         <div className="flex flex-col gap-8">
-                            <TaskBox activity={"Follow @din_lol on X"} />
-                            <TaskBox activity={"Follow @din_lol on X"} />
+                            <TaskBox activity={"Daily Check In"} point={5} action={"Go"} link={"https://x.com/MemoLabsOrg"} />
+                            <TaskBox activity={".Follow @MemoLabsOrg on twitter"} action={"Follow"} link={"https://x.com/MemoLabsOrg"} />
+                            <TaskBox activity={"Join MEMO on Telegram"} action={"Join"} link={"https://t.me/memolabsio"} />
+                            <TaskBox activity={"Join MEMO on Discord"} action={"Join"} link={"https://discord.com/invite/YG4Ydv2E7X"} />
+                            <TaskBox activity={"Share Link to TG"} point={5} action={"Share"} link={'https://t.me/share/url?url=' + encodeURIComponent(currentUrl) + '&text=' + encodeURIComponent(tgText)} />
+                            <TaskBox activity={"Share Link to Twitter"} point={5} action={"Share"} link={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(twitterText)} />
                         </div>
                     </div>
                 </div>

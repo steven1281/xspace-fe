@@ -12,6 +12,7 @@ import { useUser } from "@/lib/context/UserContext"
 
 export default function Refer() {
     const { userInfo } = useUser();
+    const [copyStatus, setCopyStatus] = useState('');
 
     const router = useRouter()
 
@@ -21,6 +22,35 @@ export default function Refer() {
         referModal.current.classList.toggle('flex')
         referModal.current.classList.toggle('hidden')
     }
+
+    const handleCopyInviteCode = async () => {
+        if (!userInfo?.InviteCode) {
+            setCopyStatus('No invite code available');
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(userInfo.InviteCode);
+            setCopyStatus('Copied!');
+
+            setTimeout(() => setCopyStatus(''), 3000);
+        } catch (err) {
+            const textArea = document.createElement('textarea');
+            textArea.value = userInfo.InviteCode;
+            document.body.appendChild(textArea);
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                setCopyStatus(successful ? 'Copied!' : 'Failed to copy');
+            } catch (err) {
+                setCopyStatus('Error copying');
+            }
+
+            document.body.removeChild(textArea);
+        }
+    };
+
     return (
         <>
             <div ref={referModal} className="fixed inset-0 bg-[#121212]/70 z-50 hidden justify-center items-center">
@@ -96,7 +126,12 @@ export default function Refer() {
                         </div>
                         <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center items-center gap-4 pl-4">
                             <button onClick={toggleReferModal} className="lg:text-sm w-fit p-2 rounded-full flex items-center gap-2 bg-xspace-green text-black">Share Link<Image src={"/images/share-link.svg"} className="w-5" width={14} height={12} alt="" /></button>
-                            <button className="lg:text-sm w-fit p-2 rounded-full flex items-center gap-2 bg-white text-xspace-dark">Copy Link<Image src={"/images/icon-park-outline_copy.svg"} className="w-5" width={14} height={14} alt="" /></button>
+                            <button onClick={handleCopyInviteCode} className="lg:text-sm w-fit p-2 rounded-full flex items-center gap-2 bg-white text-xspace-dark">Copy Link<Image src={"/images/icon-park-outline_copy.svg"} className="w-5" width={14} height={14} alt="" /></button>
+                            {copyStatus && (
+                                <div className="text-sm text-green-500 animate-fade-in">
+                                    {copyStatus}
+                                </div>
+                            )}
                         </div>
                     </div>
 
