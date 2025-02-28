@@ -23,7 +23,6 @@ export default function Home() {
                 <Image src={"/images/Ellipse 18.png"} className="absolute right-0 inset-y-0 h-screen" width={1395} height={1171} alt="" />
                 <Image src={"/images/Ellipse 19.png"} className="absolute right-0 inset-y-0 h-screen bottom-0" width={997} height={1171} alt="" />
 
-                <Header />
                 <div className="text-center grid gap-12 md:grid-cols-2 h-full translate-y-1/4">
                     <div className="flex flex-col gap-6 md:pt-12">
                         <h1 className="text-5xl md:text-left md:text-7xl">AI Data <span className="text-[#05F292] paytone-one">Node</span> Infrastructure</h1>
@@ -67,8 +66,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </>
     )
 }

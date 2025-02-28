@@ -15,7 +15,6 @@ export default function Earnings() {
                     <Image src={"/images/Ellipse 19.png"} className="absolute right-0 -bottom-1/3 h-screen" width={1395} height={1171} alt="" />
                 </div>
 
-                <Header />
                 <div className="bg-[#05F29205] border-x-4 border-solid border-[#05F292] p-4 rounded-2xl my-12 relative flex flex-col gap-6 md:flex-row z-10">
                     <div className="flex w-1/2 items-center gap-4 flex-wrap h-fit border-b border-solid border-[#65646450] pb-4 pr-4 md:border-r md:border-b-0 md:w-fit md:items-center md:justify-center md:py-4">
                         <Image src={"/images/download (14) 1.svg"} width={33} height={33} alt="" />
@@ -63,7 +62,6 @@ export default function Earnings() {
                 </div>
             </div>
 
-            <Footer />
         </>
     )
 }

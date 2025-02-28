@@ -37,7 +37,7 @@ export default function Ranks() {
                     <Image src={"/images/Ellipse 19.png"} className="absolute right-0 -bottom-1/3 h-screen" width={1395} height={1171} alt="" />
                 </div>
 
-                <Header />
+               
 
                 <div className="bg-[#05F29205] border-x-4 border-solid border-[#05F292] pl-0 rounded-2xl my-12 relative flex gap-6 md:flex-row z-10">
                     <div ref={side} className="hidden lg:flex flex-col gap-0 bg-[#024025] rounded-2xl p-4">
@@ -106,7 +106,7 @@ export default function Ranks() {
 
             </div>
 
-            <Footer />
+        
         </>
     )
 }

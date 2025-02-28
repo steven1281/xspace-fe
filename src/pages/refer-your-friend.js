@@ -73,7 +73,7 @@ export default function Refer() {
                     <Image src={"/images/Ellipse 19.png"} className="absolute right-0 -bottom-1/3 h-screen" width={1395} height={1171} alt="" />
                 </div>
 
-                <Header />
+            
 
                 <div className="w-full flex justify-between md:grid md:grid-cols-3 items-center py-6">
                     <button onClick={() => router.back()} className="relative top-1"><svg className="size-8" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z" /></svg></button>
@@ -160,7 +160,7 @@ export default function Refer() {
             </div>
 
             <ReferFooterComponent />
-            <Footer />
+           
         </>
     )
 }

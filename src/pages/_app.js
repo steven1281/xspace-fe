@@ -13,6 +13,8 @@ import { AuthProvider } from "@/lib/context/AuthContext";
 import { PointProvider } from "@/lib/context/PointContext";
 import { NFTProvider } from "@/lib/context/NFTContext";
 import { UserProvider } from "@/lib/context/UserContext";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 export default function App({ Component, pageProps }) {
     const config = getDefaultConfig({
@@ -34,7 +36,9 @@ export default function App({ Component, pageProps }) {
                             <PointProvider>
                                 <NFTProvider>
                                     <UserProvider>
+                                        <Header />
                                         <Component {...pageProps} />
+                                        <Footer />
                                     </UserProvider>
                                 </NFTProvider>
                             </PointProvider>
