@@ -38,7 +38,6 @@ export default function Ranks() {
                 </div>
 
                
-
                 <div className="bg-[#05F29205] border-x-4 border-solid border-[#05F292] pl-0 rounded-2xl my-12 relative flex gap-6 md:flex-row z-10">
                     <div ref={side} className="hidden lg:flex flex-col gap-0 bg-[#024025] rounded-2xl p-4">
                         <button onClick={sideToggle} className="absolute top-6 right-6 lg:hidden bg-xspace-green/20 p-2 rounded-md mb-4"><svg className="size-6" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" /></svg></button>

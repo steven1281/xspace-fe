@@ -25,7 +25,7 @@ export default function Header() {
     }
 
     return (
-        <div className='relative z-10'>
+        <div className='px-6 md:px-12 lg:px-20  relative z-10'>
             <nav className="flex justify-between items-center py-8 border-b border-solid border-[#616161]">
                 <Link href={"/"} className="font-bold text-2xl">XSpace</Link>
                 <div className='hidden justify-center items-center gap-12 lg:flex'>
