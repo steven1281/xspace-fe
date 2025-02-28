@@ -1,17 +1,22 @@
 import { useNFT } from "@/lib/context/NFTContext";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 
 export default function XData({ tokenID }) {
     const { getNFTInfo } = useNFT();
+    const { isConnected } = useAccount();
     const [nInfo, setNInfo] = useState({
         Name: "-"
     })
-    getNFTInfo(tokenID)
-        .then((nftInfo) => {
-            setNInfo(nftInfo)
-            console.log("xdata: ", nftInfo)
-        })
+
+    useEffect(() => {
+        getNFTInfo(tokenID)
+            .then((nftInfo) => {
+                setNInfo(nftInfo)
+                console.log("xdata: ", nftInfo)
+            })
+    }, [tokenID, isConnected, getNFTInfo])
 
     return (
         <div className="bg-gradient-to-br from-[#009688] to-[#05F292] rounded-2xl p-4 relative">
