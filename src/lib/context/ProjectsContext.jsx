@@ -15,6 +15,7 @@ export const ProjectProvider = ({ children }) => {
         const Projects = async () => {
             const storedProjects = localStorage.getItem('projects');
             if (storedProjects) {
+                console.log("storedProjects", storedProjects)
                 setProjects(JSON.parse(storedProjects));
                 return;
             }
@@ -35,20 +36,14 @@ export const ProjectProvider = ({ children }) => {
 
     useEffect(() => {
         const RankList = async () => {
-            const storedRankInfo = localStorage.getItem('rankInfo');
-            if (storedRankInfo) {
-                setRankInfo(JSON.parse(storedRankInfo));
-                return;
-            }
-
             try {
                 const response = await axios.get(
                     `${API_URL.PROJECT_RANK}?id=${projectid}&page=${pageid}&size=20`, {
                 });
                 if (response.status === 200) {
-                    setRankInfo(response.data.RnakInfo);
-                    localStorage.setItem('rankInfo', JSON.stringify(response.data.RnakInfo));
-                    console.log("rank info", response.data.RnakInfo);
+                    setRankInfo(response.data.RankInfo);
+                    // localStorage.setItem('rankInfo', JSON.stringify(response.data.RnakInfo));
+                    console.log("rank info", response.data.RankInfo);
                 }
             } catch (error) {
                 console.error(error);

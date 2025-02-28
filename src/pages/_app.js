@@ -31,12 +31,12 @@ export default function App({ Component, pageProps }) {
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider locale="en-US " modalSize="compact" theme={darkTheme()}>
+                    <Header />
                     <ProjectProvider>
                         <AuthProvider>
                             <PointProvider>
                                 <NFTProvider>
                                     <UserProvider>
-                                        <Header />
                                         <Component {...pageProps} />
                                         <Footer />
                                     </UserProvider>

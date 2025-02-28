@@ -2,7 +2,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Link from 'next/link';
 import { useAccount } from 'wagmi';
 import { useEffect, useRef } from 'react';
-import { WalletConnectButton } from './connectButton'
+import { useRouter } from 'next/router';
 
 export default function Header() {
     const { isConnected, address } = useAccount();
@@ -11,7 +11,7 @@ export default function Header() {
     const menu = useRef(null)
     const openMenuButton = useRef(null)
     const closeMenuButton = useRef(null)
-
+    const router = useRouter();
 
     const openMenu = () => {
         menu.current.classList.toggle("hidden")
@@ -36,7 +36,7 @@ export default function Header() {
                     <Link href={"/tasks"} className='font-medium'>Tasks</Link>
                 </div>
                 <div className='flex w-fit gap-4 items-center'>
-                    <WalletConnectButton />
+                    <ConnectButton />
                     <button ref={openMenuButton} onClick={openMenu} className='block lg:hidden'><svg xmlns="http://www.w3.org/2000/svg" className='size-8' height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" /></svg></button>
                     <button ref={closeMenuButton} onClick={openMenu} className='hidden'><svg xmlns="http://www.w3.org/2000/svg" className='size-8' height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" /></svg></button>
                 </div>

@@ -15,7 +15,6 @@ export const NFTProvider = ({ children }) => {
 
     const clearNFTData = useCallback(() => {
         setNFTInfos([]);
-        localStorage.removeItem("NFTInfos");
     }, []);
 
     const getNFTList = useCallback(async () => {
@@ -31,12 +30,9 @@ export const NFTProvider = ({ children }) => {
                     signal: newAbortController.signal
                 })
                 if (response.status === 200) {
-                    setNFTInfos(response.data.nftInfos)
-                    localStorage.setItem("NFTInfos", JSON.stringify(response.data.nftInfos));
+                    setNFTInfos(response.data.NftInfos)
+                    console.log("nftlist: ", response.data.NftInfos)
                 }
-            } else {
-                const stored = localStorage.getItem("NFTInfos");
-                if (stored) setNFTInfos(JSON.parse(stored));
             }
         } catch (error) {
             if (axios.isCancel(error)) {
@@ -67,9 +63,9 @@ export const NFTProvider = ({ children }) => {
     }, [isConnected, clearNFTData]);
 
 
-    const getNFTInfo = useCallback(async (tokenID) => {
+    const getNFTInfo = async (tokenID) => {
         if (!tokenID) return null;
-
+        console.log("tokenID", tokenID)
         try {
             const accessToken = localStorage.getItem("accessToken");
             const response = await axios.get(API_URL.NFT_TWEET_INFO, {
@@ -77,13 +73,18 @@ export const NFTProvider = ({ children }) => {
                 params: { tokenID: tokenID }
             });
 
-            return response.status === 200 ? response.data : null;
+            if (response.status === 200) {
+                console.log("nftinfo: ", response.data)
+                return response.data
+            }
+
+            return null;
         } catch (error) {
             console.error("NFT info error:", error);
             return null;
         }
 
-    }, [])
+    }
 
 
     return (

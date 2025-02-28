@@ -64,7 +64,7 @@ export default function Space() {
                             {
                                 NFTInfos?.map((NFTInfo, i) => {
                                     return (
-                                        <XData tokenID={NFTInfo.tokenID} key={i} />
+                                        <XData tokenID={NFTInfo.TokenId} key={i} />
                                     )
                                 })
                             }
