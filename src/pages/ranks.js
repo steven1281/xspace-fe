@@ -31,13 +31,7 @@ export default function Ranks() {
 
     return (
         <>
-            <div className="px-6 md:px-12 lg:px-20 relative">
-                <div className="absolute bottom-24 h-screen w-full">
-                    <Image src={"/images/Group 34506.png"} className="absolute right-0 w-24 -bottom-1/3" width={656} height={656} alt="" />
-                    <Image src={"/images/Ellipse 19.png"} className="absolute right-0 -bottom-1/3 h-screen" width={1395} height={1171} alt="" />
-                </div>
-
-               
+            <div className="h-screen px-6 md:px-12 lg:px-20 relative">
                 <div className="bg-[#05F29205] border-x-4 border-solid border-[#05F292] pl-0 rounded-2xl my-12 relative flex gap-6 md:flex-row z-10">
                     <div ref={side} className="hidden lg:flex flex-col gap-0 bg-[#024025] rounded-2xl p-4">
                         <button onClick={sideToggle} className="absolute top-6 right-6 lg:hidden bg-xspace-green/20 p-2 rounded-md mb-4"><svg className="size-6" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" /></svg></button>
@@ -66,7 +60,7 @@ export default function Ranks() {
                             </div>
                             <div className="flex w-1/2 items-center gap-4 h-fit items-center md:py-4">
                                 <Image src={"/images/download (14) 1.svg"} width={33} height={33} alt="" />
-                                <p className="">mData Pool: $250,000</p>
+                                <p className="">MemoUnis Pool: $250,000</p>
                             </div>
                         </section>
 
@@ -77,7 +71,7 @@ export default function Ranks() {
                                         <th>Rank</th>
                                         <th>Wallet</th>
                                         <th>Scores</th>
-                                        <th>mData</th>
+                                        <th>MemoUnis</th>
                                     </tr>
                                 </thead>
 
@@ -105,7 +99,7 @@ export default function Ranks() {
 
             </div>
 
-        
+
         </>
     )
 }

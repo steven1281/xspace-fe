@@ -73,7 +73,7 @@ export default function Refer() {
                     <Image src={"/images/Ellipse 19.png"} className="absolute right-0 -bottom-1/3 h-screen" width={1395} height={1171} alt="" />
                 </div>
 
-            
+
 
                 <div className="w-full flex justify-between md:grid md:grid-cols-3 items-center py-6">
                     <button onClick={() => router.back()} className="relative top-1"><svg className="size-8" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z" /></svg></button>
@@ -88,14 +88,14 @@ export default function Refer() {
                             <p className="">Connect wallet</p>
                             <Image src={"/images/Arrow 1.svg"} width={33} height={0} alt="" />
                             <Image src={"/images/token 3.svg"} width={30} height={30} alt="" />
-                            <p className="capitalize">You&apos;ll both get 5 wafers</p>
+                            <p className="capitalize">You&apos;ll both get 5 MemoUnis</p>
                         </section>
 
                         <section className="flex gap-4">
                             <p className="">Complete &apos;Newbie Task&apos;</p>
                             <Image src={"/images/Arrow 1.svg"} width={33} height={0} alt="" />
                             <Image src={"/images/token 3.svg"} width={30} height={30} alt="" />
-                            <p className="capitalize">You&apos;ll both get 50 wafers</p>
+                            <p className="capitalize">You&apos;ll both get 50 MemoUnis</p>
                         </section>
                     </div>
 
@@ -116,7 +116,7 @@ export default function Refer() {
                             <Image src={"/images/referral-reward.svg"} width={40} height={37} alt="" />
                             <p className="font-bold">Referral Reward</p>
                         </div>
-                        <p className="text-xspace-green font-bold text-right">{userInfo ? userInfo.Points : 0} Wafers</p>
+                        <p className="text-xspace-green font-bold text-right">{userInfo ? userInfo.Points : 0} MemoUnis</p>
                     </div>
 
                     <div className="bg-[#021B12] p-4 rounded-lg grid grid-cols-2 items-center">
@@ -137,7 +137,7 @@ export default function Refer() {
 
                     <div className="bg-[#021B12] p-4 rounded-lg grid grid-cols-2 items-center">
                         <p className="border-r border-solid border-xspace-border flex gap-3 items-center font-bold">Referral Reward</p>
-                        <p className="text-xspace-green font-bold text-right">0 Wafers</p>
+                        <p className="text-xspace-green font-bold text-right">0 MemoUnis</p>
                     </div>
 
                 </div>
@@ -160,7 +160,7 @@ export default function Refer() {
             </div>
 
             <ReferFooterComponent />
-           
+
         </>
     )
 }

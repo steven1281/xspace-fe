@@ -32,7 +32,7 @@ export default function Space() {
 
     return (
         <>
-            <div className="px-6 md:px-12 lg:-px-20">
+            <div className="h-screen px-6 md:px-12 lg:-px-20">
 
                 <div className="bg-[#05F29205] border-x-4 border-solid border-[#05F292] p-6 md:p-12 rounded-2xl my-12 min-h-[75vh] relative">
                     <div className="flex gap-6 relative z-10">
