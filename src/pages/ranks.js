@@ -60,7 +60,7 @@ export default function Ranks() {
                             </div>
                             <div className="flex w-1/2 items-center gap-4 h-fit items-center md:py-4">
                                 <Image src={"/images/download (14) 1.svg"} width={33} height={33} alt="" />
-                                <p className="">MemoUnis Pool: $250,000</p>
+                                <p className="">MUnits Pool: $250,000</p>
                             </div>
                         </section>
 
@@ -71,7 +71,7 @@ export default function Ranks() {
                                         <th>Rank</th>
                                         <th>Wallet</th>
                                         <th>Scores</th>
-                                        <th>MemoUnis</th>
+                                        <th>MUnits</th>
                                     </tr>
                                 </thead>
 

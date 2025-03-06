@@ -26,11 +26,10 @@ export default function Header() {
     }
 
     return (
-        <div className='px-6 md:px-12 lg:px-20  relative z-10'>
-            <nav className="flex justify-between items-center py-8 border-b border-solid border-[#616161]">
+        <div className='px-6 md:px-12 relative z-10'>
+            <nav className="flex justify-between items-center border-b border-solid border-[#616161]">
                 <div className='flex flex-row items-center gap-2'>
-                    <Image src={"/logo.png"} width={40} height={40} alt="" ></Image>
-                    <Link href={"/"} className="font-bold text-2xl">XSpace</Link>
+                    <Image src={"/logo.png"} className='mx-auto scale-60 lg:scale-[0.5]' width={310} height={40} alt="" ></Image>
                 </div>
 
                 <div className='hidden justify-center items-center gap-12 lg:flex'>

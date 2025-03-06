@@ -48,7 +48,7 @@ export default function Home() {
                     <h2 className="text-[#05F292] text-3xl w-72">Must-have XSpace Extension</h2>
                     <div className="w-fit">
                         <Image src={"/images/friendship 1.svg"} className="w-32 mx-auto" width={119} height={109} alt="" />
-                        <button className="w-40 p-2 rounded-full bg-gradient-to-b from-[#074D35] to-[#05F292] relative -top-1">Refer a friend MemoUnis the two </button>
+                        <button className="w-40 p-2 rounded-full bg-gradient-to-b from-[#074D35] to-[#05F292] relative -top-1">Refer a friend MUnits the two </button>
                     </div>
                 </div>
 

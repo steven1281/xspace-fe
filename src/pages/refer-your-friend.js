@@ -63,7 +63,7 @@ export default function Refer() {
                         <button onClick={toggleReferModal} className="px-4 py-2 font-semibold text-black bg-xspace-green rounded-full">Close</button>
                         <button className="px-4 py-2 font-semibold hover:bg-xspace-green/20 rounded-full">Skip</button>
                     </div>
-                    <p className="text-center px-4">Don&apos;t have one? Go to <Link href={"#"} className="text-xspace-green">DIN Discord</Link> and <Link href={"#"} className="text-xspace-green">X</Link></p>
+                    <p className="text-center px-4">Don&apos;t have one? Go to <Link href={"#"} className="text-xspace-green">Xspace Discord</Link> and <Link href={"#"} className="text-xspace-green">X</Link></p>
                 </div>
             </div>
 
@@ -88,14 +88,14 @@ export default function Refer() {
                             <p className="">Connect wallet</p>
                             <Image src={"/images/Arrow 1.svg"} width={33} height={0} alt="" />
                             <Image src={"/images/token 3.svg"} width={30} height={30} alt="" />
-                            <p className="capitalize">You&apos;ll both get 5 MemoUnis</p>
+                            <p className="capitalize">You&apos;ll both get 5 MUnits</p>
                         </section>
 
                         <section className="flex gap-4">
                             <p className="">Complete &apos;Newbie Task&apos;</p>
                             <Image src={"/images/Arrow 1.svg"} width={33} height={0} alt="" />
                             <Image src={"/images/token 3.svg"} width={30} height={30} alt="" />
-                            <p className="capitalize">You&apos;ll both get 50 MemoUnis</p>
+                            <p className="capitalize">You&apos;ll both get 50 MUnits</p>
                         </section>
                     </div>
 
@@ -116,7 +116,7 @@ export default function Refer() {
                             <Image src={"/images/referral-reward.svg"} width={40} height={37} alt="" />
                             <p className="font-bold">Referral Reward</p>
                         </div>
-                        <p className="text-xspace-green font-bold text-right">{userInfo ? userInfo.Points : 0} MemoUnis</p>
+                        <p className="text-xspace-green font-bold text-right">{userInfo ? userInfo.Points : 0} MUnits</p>
                     </div>
 
                     <div className="bg-[#021B12] p-4 rounded-lg grid grid-cols-2 items-center">
@@ -137,7 +137,7 @@ export default function Refer() {
 
                     <div className="bg-[#021B12] p-4 rounded-lg grid grid-cols-2 items-center">
                         <p className="border-r border-solid border-xspace-border flex gap-3 items-center font-bold">Referral Reward</p>
-                        <p className="text-xspace-green font-bold text-right">0 MemoUnis</p>
+                        <p className="text-xspace-green font-bold text-right">0 MUnits</p>
                     </div>
 
                 </div>
