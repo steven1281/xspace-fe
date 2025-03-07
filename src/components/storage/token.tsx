@@ -136,3 +136,28 @@ function isTokenExpire(token: string, threshold: number): boolean {
     }
     return true;
 }
+
+export async function AddPoint(actionid: number) {
+    const accessToken = localStorage.getItem("accessToken");
+    try {
+        const response = await axios.post(
+            API_URL.POINT_ADD,
+            {
+                params: { "tokenId": actionid },
+
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`
+                },
+            },
+        );
+        if (response.status === 200) {
+            console.log("Add Point: ", response.data, actionid);
+        }
+
+    } catch (error) {
+        console.error("add point", error)
+    }
+
+}

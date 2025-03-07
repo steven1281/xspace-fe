@@ -26,12 +26,12 @@ export default function Tasks() {
                         <p className="mb-4">Wrap up all these tasks, and you&apos;ll get 15 more MUnits!</p>
 
                         <div className="flex flex-col gap-8">
-                            <TaskBox activity={"Daily Check In"} point={5} link={"https://x.com/MemoLabsOrg"} />
-                            <TaskBox activity={".Follow @MemoLabsOrg on twitter"} link={"https://x.com/MemoLabsOrg"} />
-                            <TaskBox activity={"Join MEMO on Telegram"} link={"https://t.me/memolabsio"} />
-                            <TaskBox activity={"Join MEMO on Discord"} link={"https://discord.com/invite/YG4Ydv2E7X"} />
-                            <TaskBox activity={"Share Link to TG"} point={5} link={'https://t.me/share/url?url=' + encodeURIComponent(currentUrl) + '&text=' + encodeURIComponent(tgText)} />
-                            <TaskBox activity={"Share Link to Twitter"} point={5} link={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(twitterText)} />
+                            <TaskBox activity={"Daily Check In"} actionid={100} point={5} link={"https://x.com/MemoLabsOrg"} />
+                            <TaskBox activity={".Follow @MemoLabsOrg on twitter"} actionid={101} link={"https://x.com/MemoLabsOrg"} />
+                            <TaskBox activity={"Join MEMO on Telegram"} actionid={102} link={"https://t.me/memolabsio"} />
+                            <TaskBox activity={"Join MEMO on Discord"} actionid={103} link={"https://discord.com/invite/YG4Ydv2E7X"} />
+                            <TaskBox activity={"Share Link to TG"} actionid={104} point={5} link={'https://t.me/share/url?url=' + encodeURIComponent(currentUrl) + '&text=' + encodeURIComponent(tgText)} />
+                            <TaskBox activity={"Share Link to Twitter"} actionid={105} point={5} link={'https://twitter.com/intent/tweet?text=' + encodeURIComponent(twitterText)} />
                         </div>
                     </div>
                 </div>
